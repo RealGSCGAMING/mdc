@@ -1,0 +1,253 @@
+<html>
+
+<head>
+    <title>Test</title>
+    <link href="https://fonts.cdnfonts.com/css/helvetica-neue-lt-pro-55" rel="stylesheet">
+
+    <style>
+        :root {
+            --scrollspeed: 60s;
+        }
+
+        body {
+            font-family: "Helvetica Neue LT Pro", sans-serif;
+            font-weight: 750;
+            background-color: red;
+            color: white;
+            justify-self: center;
+            justify-items: center;
+            text-align: center;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-flow: column nowrap;
+            align-items: center;
+        }
+
+        .white-button,
+        .red-button {
+            font-family: "Helvetica Neue LT Pro", sans-serif;
+            font-weight: 750;
+            border-width: 2px;
+            border-color: red;
+            border-style: solid;
+            font-size: 3em;
+            padding: 10px;
+            color: red;
+            background-color: white;
+            cursor: pointer;
+            text-align: center;
+            margin: 10px;
+        }
+
+        .white-button {
+            border-color: red;
+            color: red;
+            background-color: white;
+        }
+
+        .white-button:hover {
+            background-color: red;
+            color: white;
+        }
+
+        .red-button {
+            background-color: red;
+            color: white;
+            border-color: white;
+        }
+
+        .red-button:hover {
+            background-color: white;
+            color: red;
+            border-color: red;
+        }
+
+        input {
+            font-family: monospace;
+            border: 2px solid red;
+            font-size: 2em;
+            height: 2em;
+            background-color: white;
+            color: red;
+            display: block;
+            margin: 10px;
+            padding: 10px;
+            text-align: center;
+        }
+
+        input:focus {
+            outline: none;
+        }
+
+        .container {
+            display: flex;
+            flex-flow: column nowrap;
+            background-color: white;
+            border: 2px solid red;
+            padding: 20px;
+            justify-self: center;
+            justify-content: center;
+            text-align: center;
+            gap: 0px;
+            width: 500px;
+            margin: auto;
+        }
+
+        .marquee,
+        .marquee-mini {
+            display: flex;
+            overflow: hidden;
+            padding: 10px 0;
+        }
+
+        .marquee {
+            position: relative;
+            background: white;
+            border: 2px solid red;
+            font-size: 1.5em;
+            color: red;
+            border-left: none;
+            border-right: none;
+        }
+
+        .marquee-mini {
+            position: fixed;
+            left: 0px;
+            height: 5px;
+            top: 0px;
+            background: rgb(255, 0, 0);
+            border: 1px solid white;
+            align-items: center;
+            z-index: 99999;
+            font-size: 0.5em;
+        }
+
+        .marquee-content {
+            flex-shrink: 0;
+            display: flex;
+            font-size: 2em;
+            font-weight: 950;
+            animation: scroll var(--scrollspeed) linear infinite;
+        }
+
+        @keyframes scroll {
+            from {
+                transform: translateX(0);
+            }
+
+            to {
+                transform: translateX(-100%);
+            }
+        }
+
+        .header {
+            display: flex;
+            flex-flow: column nowrap;
+            background-color: white;
+            color: red;
+            padding: 20px;
+            font-weight: 400;
+            font-size: 20px;
+            justify-content: center;
+            text-align: center;
+            align-content: center;
+            align-items: center;
+        }
+
+        .header>h1 {
+            font-weight: 750;
+        }
+
+        a {
+            color: white;
+        }
+
+        .formTitle {
+            font-weight: 750;
+            font-size: 50px;
+        }
+
+        .monoFont {
+            font-family: monospace;
+            color: red;
+            font-size: 1.5em;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <h1>Title Graphic Goes Here</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam dignissim, tellus auctor maximus pellentesque,
+            mauris justo consequat lectus, in accumsan purus nisi vitae mi. In condimentum enim nec dolor scelerisque,
+            volutpat condimentum massa suscipit. Maecenas aliquam leo diam, eget sodales est mattis eget. Phasellus quis
+            lacinia sem. Ut vel ante ac ipsum vehicula tempus. In hac habitasse platea dictumst. Nunc dolor tortor,
+            luctus nec neque quis, lacinia faucibus metus. Vestibulum mi lacus, interdum sit amet sapien ut, cursus
+            feugiat turpis. Duis eget mollis dolor. Pellentesque dictum vel augue eu finibus. Fusce volutpat ultricies
+            mauris vitae porta. Aenean nec commodo justo. Nulla vel mi id turpis pulvinar pulvinar. Ut quis dapibus
+            felis. Etiam malesuada tellus a luctus viverra.</p>
+        <p>Curabitur venenatis ultrices leo, et luctus dolor consequat at. Duis egestas auctor congue. Donec non nulla
+            est. Nullam et turpis nulla. Proin dapibus, est eu feugiat tristique, dolor quam facilisis metus, et
+            imperdiet felis diam id urna. Morbi maximus tempor ligula, vitae dapibus lacus hendrerit a. Pellentesque
+            posuere velit nec vestibulum facilisis. Duis eget porta libero. Phasellus vehicula urna et nibh varius
+            placerat. Maecenas eget pharetra libero.</p>
+    </div>
+
+    <div class="marquee-mini">
+        <div class="marquee-content">
+            <span> • TEST • TEST • TEST • TEST •
+                TEST • TEST • TEST • TEST •
+                TEST • TEST • TEST • TEST • TEST •
+                TEST • TEST • TEST • TEST •
+                TEST • TEST • TEST • TEST • TEST •
+                TEST • TEST • TEST • TEST •
+                TEST&nbsp;</span>
+        </div>
+
+        <div class="marquee-content">
+            <span> • TEST • TEST • TEST • TEST •
+                TEST • TEST • TEST • TEST •
+                TEST • TEST • TEST • TEST • TEST •
+                TEST • TEST • TEST • TEST •
+                TEST • TEST • TEST • TEST • TEST •
+                TEST • TEST • TEST • TEST •
+                TEST&nbsp;</span>
+        </div>
+    </div>
+
+    <div class="marquee">
+        <div class="marquee-content">
+            <span> • TEST • TEST • TEST • TEST •
+                TEST • TEST • TEST • TEST •
+                TEST&nbsp;</span>
+        </div>
+
+        <div class="marquee-content">
+            <span> • TEST • TEST • TEST • TEST •
+                TEST • TEST • TEST • TEST •
+                TEST&nbsp;</span>
+        </div>
+    </div>
+
+    <h1 class="formTitle">Claim Form</h1>
+    <div class="container">
+        <p class="monoFont">Tell us about yourself</p>
+        <input placeholder="Name"></input>
+        <input placeholder="How can we contact you?"></input>
+        <button class="red-button" onclick="alert('Your input has been sent into the void')">CONTINUE</button>
+    </div>
+    <p>Design inspired by the <a href="https://99percentoffsale.com" target="_blank">99 Percent Off Sale</a></p>
+    <p>Marquee design from <a href="https://codepen.io/hexagoncircle/pen/eYMrGwW" target="_blank">this codepen</a></p>
+</body>
+<script>
+
+
+
+    function setCookie() {
+        
+    }
+</script>
+
+</html>
