@@ -1,179 +1,10 @@
+<!DOCTYPE html>
 <html>
 
 <head>
-    <title>Test</title>
-    <link href="https://fonts.cdnfonts.com/css/helvetica-neue-lt-pro-55" rel="stylesheet">
-
-    <style>
-        :root {
-            --scrollspeed: 60s;
-        }
-
-        body {
-            font-family: "Helvetica Neue LT Pro", sans-serif;
-            font-weight: 750;
-            background-color: red;
-            color: white;
-            justify-self: center;
-            justify-items: center;
-            text-align: center;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            flex-flow: column nowrap;
-            align-items: center;
-        }
-
-        .white-button,
-        .red-button {
-            font-family: "Helvetica Neue LT Pro", sans-serif;
-            font-weight: 750;
-            border-width: 2px;
-            border-color: red;
-            border-style: solid;
-            font-size: 3em;
-            padding: 10px;
-            color: red;
-            background-color: white;
-            cursor: pointer;
-            text-align: center;
-            margin: 10px;
-        }
-
-        .white-button {
-            border-color: red;
-            color: red;
-            background-color: white;
-        }
-
-        .white-button:hover {
-            background-color: red;
-            color: white;
-        }
-
-        .red-button {
-            background-color: red;
-            color: white;
-            border-color: white;
-        }
-
-        .red-button:hover {
-            background-color: white;
-            color: red;
-            border-color: red;
-        }
-
-        input {
-            font-family: monospace;
-            border: 2px solid red;
-            font-size: 2em;
-            height: 2em;
-            background-color: white;
-            color: red;
-            display: block;
-            margin: 10px;
-            padding: 10px;
-            text-align: center;
-        }
-
-        input:focus {
-            outline: none;
-        }
-
-        .container {
-            display: flex;
-            flex-flow: column nowrap;
-            background-color: white;
-            border: 2px solid red;
-            padding: 20px;
-            justify-self: center;
-            justify-content: center;
-            text-align: center;
-            gap: 0px;
-            width: 500px;
-            margin: auto;
-        }
-
-        .marquee,
-        .marquee-mini {
-            display: flex;
-            overflow: hidden;
-            padding: 10px 0;
-        }
-
-        .marquee {
-            position: relative;
-            background: white;
-            border: 2px solid red;
-            font-size: 1.5em;
-            color: red;
-            border-left: none;
-            border-right: none;
-        }
-
-        .marquee-mini {
-            position: fixed;
-            left: 0px;
-            height: 5px;
-            top: 0px;
-            background: rgb(255, 0, 0);
-            border: 1px solid white;
-            align-items: center;
-            z-index: 99999;
-            font-size: 0.5em;
-        }
-
-        .marquee-content {
-            flex-shrink: 0;
-            display: flex;
-            font-size: 2em;
-            font-weight: 950;
-            animation: scroll var(--scrollspeed) linear infinite;
-        }
-
-        @keyframes scroll {
-            from {
-                transform: translateX(0);
-            }
-
-            to {
-                transform: translateX(-100%);
-            }
-        }
-
-        .header {
-            display: flex;
-            flex-flow: column nowrap;
-            background-color: white;
-            color: red;
-            padding: 20px;
-            font-weight: 400;
-            font-size: 20px;
-            justify-content: center;
-            text-align: center;
-            align-content: center;
-            align-items: center;
-        }
-
-        .header>h1 {
-            font-weight: 750;
-        }
-
-        a {
-            color: white;
-        }
-
-        .formTitle {
-            font-weight: 750;
-            font-size: 50px;
-        }
-
-        .monoFont {
-            font-family: monospace;
-            color: red;
-            font-size: 1.5em;
-        }
-    </style>
+    <title>The Million Dollar Challenge</title>
+    <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/helvetica-neue-lt-pro-55">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -234,20 +65,46 @@
     <h1 class="formTitle">Claim Form</h1>
     <div class="container">
         <p class="monoFont">Tell us about yourself</p>
-        <input placeholder="Name"></input>
-        <input placeholder="How can we contact you?"></input>
-        <button class="red-button" onclick="alert('Your input has been sent into the void')">CONTINUE</button>
+        <input id="nameInput" placeholder="Name"></input>
+        <input id="contactInput" placeholder="How can we contact you?"></input>
+        <button id="continueBtn" class="red-button">CONTINUE</button>
     </div>
     <p>Design inspired by the <a href="https://99percentoffsale.com" target="_blank">99 Percent Off Sale</a></p>
-    <p>Marquee design from <a href="https://codepen.io/hexagoncircle/pen/eYMrGwW" target="_blank">this codepen</a></p>
+    <p>Marquee from <a href="https://codepen.io/hexagoncircle/pen/eYMrGwW" target="_blank">this codepen</a></p>
 </body>
 <script>
 
+    let nameInput = document.getElementById("nameInput");
+    let contactInput = document.getElementById("contactInput");
+    let continueBtn = document.getElementById("continueBtn");
 
+    continueBtn.addEventListener("click", function () {
 
-    function setCookie() {
-        
-    }
+        continueBtn.disabled = true;
+
+        let name = nameInput.value;
+        let contact = contactInput.value;
+
+        nameInput.disabled = true;
+        contactInput.disabled = true;
+
+        continueBtn.textContent = "LOADING..."
+        document.documentElement.classList.add("waiting")
+
+        setTimeout(() => {
+
+            if (name == "" || contact == "") {
+                alert("Please fill out all of the fields.")
+                nameInput.disabled = false;
+                contactInput.disabled = false;
+                continueBtn.disabled = false;
+                continueBtn.textContent = "CONTINUE"
+                document.documentElement.classList.remove("waiting")
+            }
+
+        }, 10);
+    });
+
 </script>
 
 </html>
