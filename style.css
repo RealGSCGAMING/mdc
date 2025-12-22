@@ -17,7 +17,8 @@ body {
     align-items: center;
 }
 
-html.waiting, html.waiting * {
+html.waiting,
+html.waiting * {
     cursor: wait !important;
 }
 
@@ -25,9 +26,7 @@ html.waiting, html.waiting * {
 .red-button {
     font-family: "Helvetica Neue LT Pro", sans-serif;
     font-weight: 750;
-    border-width: 2px;
-    border-color: red;
-    border-style: solid;
+    border: 2px solid red;
     font-size: 3em;
     padding: 10px;
     color: red;
@@ -84,7 +83,7 @@ input:focus {
 }
 
 input:disabled {
-    background-color: rgb(194, 194, 194);
+    background-color: rgb(233, 233, 233);
 }
 
 .container {
@@ -97,8 +96,15 @@ input:disabled {
     justify-content: center;
     text-align: center;
     gap: 0px;
-    width: 500px;
+    max-width: 500px;
     margin: auto;
+    color: red;
+    position: relative;
+}
+
+.container>h1 {
+
+    font-weight: 750;
 }
 
 .marquee,
@@ -116,6 +122,8 @@ input:disabled {
     color: red;
     border-left: none;
     border-right: none;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .marquee-mini {
@@ -156,9 +164,6 @@ input:disabled {
     padding: 20px;
     font-weight: 400;
     font-size: 20px;
-    justify-content: center;
-    text-align: center;
-    align-content: center;
     align-items: center;
 }
 
@@ -166,8 +171,12 @@ input:disabled {
     font-weight: 750;
 }
 
+.header>p {
+    max-width: 50%;
+}
+
 a {
-    color: white;
+    color: red;
 }
 
 .formTitle {
@@ -179,4 +188,47 @@ a {
     font-family: monospace;
     color: red;
     font-size: 1.5em;
+}
+
+/*
+.anticheat>h1 {
+    align-self: center;
+    justify-self: center;
+    font-weight: 500;
+}
+
+.anticheat>p {
+    font-family: monospace;
+    color: white;
+    font-size: 1.5em;
+}
+*/
+
+footer {
+    background-color: white;
+    color: red;
+    padding: 20px;
+    max-width: 100%;
+    min-width: 90%;
+    margin-top: 10px;
+    bottom: 0;
+}
+
+strong {
+    font-weight: 500;
+}
+
+p {
+    font-weight: 400;
+}
+
+.sticky-container {
+  position: relative;
+  height: 1000px;
+}
+
+.sticky-element {
+  position: sticky;
+  top: 25%;
+  padding: 100px;
 }

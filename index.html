@@ -11,6 +11,7 @@
 
     <div class="header">
         <h1>Title Graphic Goes Here</h1>
+        <strong>We are giving away $1,000,000 to one lucky winner!</strong>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam dignissim, tellus auctor maximus pellentesque,
             mauris justo consequat lectus, in accumsan purus nisi vitae mi. In condimentum enim nec dolor scelerisque,
             volutpat condimentum massa suscipit. Maecenas aliquam leo diam, eget sodales est mattis eget. Phasellus quis
@@ -50,59 +51,111 @@
 
     <div class="marquee">
         <div class="marquee-content">
-            <span> • TEST • TEST • TEST • TEST •
-                TEST • TEST • TEST • TEST •
-                TEST&nbsp;</span>
+            <span> • CLAIM FORM • CLAIM FORM • CLAIM FORM • CLAIM FORM •
+                CLAIM FORM • CLAIM FORM • CLAIM FORM • CLAIM FORM •
+                CLAIM FORM&nbsp;</span>
         </div>
 
         <div class="marquee-content">
-            <span> • TEST • TEST • TEST • TEST •
-                TEST • TEST • TEST • TEST •
-                TEST&nbsp;</span>
+            <span> • CLAIM FORM • CLAIM FORM • CLAIM FORM • CLAIM FORM •
+                CLAIM FORM • CLAIM FORM • CLAIM FORM • CLAIM FORM •
+                CLAIM FORM&nbsp;</span>
         </div>
     </div>
 
-    <h1 class="formTitle">Claim Form</h1>
-    <div class="container">
-        <p class="monoFont">Tell us about yourself</p>
-        <input id="nameInput" placeholder="Name"></input>
-        <input id="contactInput" placeholder="How can we contact you?"></input>
-        <button id="continueBtn" class="red-button">CONTINUE</button>
+    <div class="sticky-container">
+        <div class="container sticky-element">
+            <h1>Ready to claim your $1,000,000?</h1>
+            <p>Click below to fill out the Claim Form.</p>
+            <strong>Good luck!</strong>
+            <button id="continueBtn" class="red-button">CLICK HERE</button>
+        </div>
     </div>
-    <p>Design inspired by the <a href="https://99percentoffsale.com" target="_blank">99 Percent Off Sale</a></p>
-    <p>Marquee from <a href="https://codepen.io/hexagoncircle/pen/eYMrGwW" target="_blank">this codepen</a></p>
+
+
+    <div class="marquee">
+        <div class="marquee-content">
+            <span> • MANIFESTO • MANIFESTO • MANIFESTO • MANIFESTO •
+                MANIFESTO • MANIFESTO • MANIFESTO • MANIFESTO •
+                MANIFESTO&nbsp;</span>
+        </div>
+
+        <div class="marquee-content">
+            <span> • MANIFESTO • MANIFESTO • MANIFESTO • MANIFESTO •
+                MANIFESTO • MANIFESTO • MANIFESTO • MANIFESTO •
+                MANIFESTO&nbsp;</span>
+        </div>
+    </div>
+
+    <div class="header">
+        <h1>MONEY IS POWER</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam dignissim, tellus auctor maximus pellentesque,
+            mauris justo consequat lectus, in accumsan purus nisi vitae mi. In condimentum enim nec dolor scelerisque,
+            volutpat condimentum massa suscipit. Maecenas aliquam leo diam, eget sodales est mattis eget. Phasellus quis
+            lacinia sem. Ut vel ante ac ipsum vehicula tempus. In hac habitasse platea dictumst. Nunc dolor tortor,
+            luctus nec neque quis, lacinia faucibus metus. Vestibulum mi lacus, interdum sit amet sapien ut, cursus
+            feugiat turpis. Duis eget mollis dolor. Pellentesque dictum vel augue eu finibus. Fusce volutpat ultricies
+            mauris vitae porta. Aenean nec commodo justo. Nulla vel mi id turpis pulvinar pulvinar. Ut quis dapibus
+            felis. Etiam malesuada tellus a luctus viverra.</p>
+        <p>Curabitur venenatis ultrices leo, et luctus dolor consequat at. Duis egestas auctor congue. Donec non nulla
+            est. Nullam et turpis nulla. Proin dapibus, est eu feugiat tristique, dolor quam facilisis metus, et
+            imperdiet felis diam id urna. Morbi maximus tempor ligula, vitae dapibus lacus hendrerit a. Pellentesque
+            posuere velit nec vestibulum facilisis. Duis eget porta libero. Phasellus vehicula urna et nibh varius
+            placerat. Maecenas eget pharetra libero.</p>
+    </div>
+
+    <footer>
+        <p>Design inspired by the <a href="https://99percentoffsale.com" target="_blank">99 Percent Off Sale</a> and <a
+                href="https://mschf.com">MSCHF</a>.
+            Marquee from <a href="https://codepen.io/hexagoncircle/pen/eYMrGwW" target="_blank">this CodePen.</a></p>
+        <p>Check out more of my projects at <a href="https://realgscgaming.github.io">realgscgaming.github.io</a>.</p>
+    </footer>
+
 </body>
+
+<script type="text/javascript" src="global.js"></script>
+
 <script>
 
-    let nameInput = document.getElementById("nameInput");
-    let contactInput = document.getElementById("contactInput");
     let continueBtn = document.getElementById("continueBtn");
+
+    let tries = 0;
+
+    let timeout;
 
     continueBtn.addEventListener("click", function () {
 
-        continueBtn.disabled = true;
+        clearTimeout(timeout)
 
-        let name = nameInput.value;
-        let contact = contactInput.value;
+        tries++;
 
-        nameInput.disabled = true;
-        contactInput.disabled = true;
+        if (tries == 1) {
+            continueBtn.textContent = "Are you sure?"
+        }
 
-        continueBtn.textContent = "LOADING..."
-        document.documentElement.classList.add("waiting")
+        else if (tries == 2) {
+            continueBtn.textContent = "100% sure?"
+        }
 
-        setTimeout(() => {
+        else if (tries == 3) {
+            continueBtn.textContent = "Really?"
+        }
 
-            if (name == "" || contact == "") {
-                alert("Please fill out all of the fields.")
-                nameInput.disabled = false;
-                contactInput.disabled = false;
-                continueBtn.disabled = false;
-                continueBtn.textContent = "CONTINUE"
-                document.documentElement.classList.remove("waiting")
-            }
+        else if (tries == 4) {
+            continueBtn.disabled = true;
+            continueBtn.textContent = "LOADING..."
 
-        }, 10);
+            setTimeout(() => {
+                window.location.href = "form.html"
+            }, 500);
+        }
+
+        timeout = setTimeout(() => {
+            tries = 0;
+            continueBtn.textContent = "CLICK HERE"
+            continueBtn.disabled = false;
+        }, 1000);
+
     });
 
 </script>
