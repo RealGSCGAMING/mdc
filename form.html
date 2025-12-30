@@ -2,9 +2,13 @@
 <html>
 
 <head>
-    <title>The Million Dollar Challenge</title>
+    <title>Claim Form</title>
     <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/helvetica-neue-lt-pro-55">
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="favicon.ico">
+
+    <style>
+    </style>
 </head>
 <style>
 </style>
@@ -31,12 +35,45 @@
                 TEST&nbsp;</span>
         </div>
     </div>
+
+    <h1>Claim Form</h1>
+
+    <div id="error">
+        <p>If you're seeing this, an error occured. Whoops!</p>
+    </div>
+
+    <div class="container form-section" id="section1">
+        <p class="monoFont">Tell us about yourself</p>
+
+        <input type="text" id="name" placeholder="Name"><br><br>
+        <input type="text" id="contact" placeholder="How can we contact you?"><br><br>
+
+        <textarea id="story" rows="4" placeholder="Why do you deserve to win the million dollars?"
+            style="display: none;"></textarea><br><br>
+        <small class="monoFont" id="charCount" style="display: none;">Characters: 0</small>
+
+        <button id="s1btn" class="red-button">NEXT</button>
+    </div>
+
+    <div class="container form-section" id="section2">
+        <h1>This form is protected by reCAPATACHA</h1>
+        <p>Complete the challenge to continue.</p>
+        <button id="s2btn" class="red-button c-button">I'm Not A Robot</button>
+    </div>
+
+    <div class="container form-section" id="section3">
+        <p id="captchaText" class="monoFont">🔒 Protected by reCAPATACHA</p>
+        <p id="question">Question failed to load.</p>
+        <input autocomplete="off" id="s3inp"></input>
+    </div>
+
+    <div style="margin-top: 10px;">
+        This form must be completed in one session.
+    </div>
+
 </body>
 
-<script src="global.js"></script>
-
-<script>
-
-</script>
+<script type="text/javascript" src="global.js"></script>
+<script type="text/javascript" src="form.js"></script>
 
 </html>

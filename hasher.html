@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Hasher</title>
+</head>
+
+<body>
+    <h1>Hasher</h1>
+    <input id="inp" placeholder="Enter string"></input>
+    <button id="btn">Hash</button>
+    <p id="otp">Hashed string will appear here</p>
+</body>
+
+<script>
+
+    let inp = document.getElementById("inp");
+    let btn = document.getElementById("btn");
+    let otp = document.getElementById("otp");
+
+    btn.addEventListener("click", async function () {
+        let hsh = await hash(inp.value);
+        otp.textContent = hsh;
+    });
+
+    async function hash(input) {
+        const encoder = new TextEncoder();
+        const data = encoder.encode(input);
+
+        const hashBuffer = await crypto.subtle.digest("SHA-256", data);
+
+        const hashArray = Array.from(new Uint8Array(hashBuffer));
+        const hashHex = hashArray
+            .map(b => b.toString(16).padStart(2, "0"))
+            .join("");
+
+        return hashHex;
+    }
+
+</script>
+
+</html>

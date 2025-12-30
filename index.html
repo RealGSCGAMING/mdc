@@ -5,11 +5,12 @@
     <title>The Million Dollar Challenge</title>
     <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/helvetica-neue-lt-pro-55">
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="favicon.ico">
 </head>
 
 <body>
 
-    <div class="header">
+    <div class="section">
         <h1>Title Graphic Goes Here</h1>
         <strong>We are giving away $1,000,000 to one lucky winner!</strong>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam dignissim, tellus auctor maximus pellentesque,
@@ -63,13 +64,11 @@
         </div>
     </div>
 
-    <div class="sticky-container">
-        <div class="container sticky-element">
-            <h1>Ready to claim your $1,000,000?</h1>
-            <p>Click below to fill out the Claim Form.</p>
-            <strong>Good luck!</strong>
-            <button id="continueBtn" class="red-button">CLICK HERE</button>
-        </div>
+    <div class="container entry">
+        <h1>Ready to claim your $1,000,000?</h1>
+        <p>Click below to fill out the Claim Form.</p>
+        <strong>Good luck!</strong>
+        <button id="continueBtn" class="red-button">CLICK HERE</button>
     </div>
 
 
@@ -87,7 +86,7 @@
         </div>
     </div>
 
-    <div class="header">
+    <div class="section">
         <h1>MONEY IS POWER</h1>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam dignissim, tellus auctor maximus pellentesque,
             mauris justo consequat lectus, in accumsan purus nisi vitae mi. In condimentum enim nec dolor scelerisque,
@@ -121,11 +120,11 @@
 
     let tries = 0;
 
-    let timeout;
+    let reset;
 
     continueBtn.addEventListener("click", function () {
 
-        clearTimeout(timeout)
+        clearTimeout(reset)
 
         tries++;
 
@@ -150,11 +149,11 @@
             }, 500);
         }
 
-        timeout = setTimeout(() => {
+        reset = setTimeout(() => {
             tries = 0;
             continueBtn.textContent = "CLICK HERE"
             continueBtn.disabled = false;
-        }, 1000);
+        }, 1500);
 
     });
 

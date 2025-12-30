@@ -15,6 +15,8 @@ body {
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
+    min-height: 100vh;
+    justify-content: center;
 }
 
 html.waiting,
@@ -82,7 +84,8 @@ input:focus {
     outline: none;
 }
 
-input:disabled {
+input:disabled,
+textarea:disabled {
     background-color: rgb(233, 233, 233);
 }
 
@@ -156,7 +159,7 @@ input:disabled {
     }
 }
 
-.header {
+.section {
     display: flex;
     flex-flow: column nowrap;
     background-color: white;
@@ -167,11 +170,15 @@ input:disabled {
     align-items: center;
 }
 
-.header>h1 {
+.section>h1 {
     font-weight: 750;
 }
 
-.header>p {
+h1 {
+    font-weight: 750;
+}
+
+.section>p {
     max-width: 50%;
 }
 
@@ -189,20 +196,6 @@ a {
     color: red;
     font-size: 1.5em;
 }
-
-/*
-.anticheat>h1 {
-    align-self: center;
-    justify-self: center;
-    font-weight: 500;
-}
-
-.anticheat>p {
-    font-family: monospace;
-    color: white;
-    font-size: 1.5em;
-}
-*/
 
 footer {
     background-color: white;
@@ -222,13 +215,53 @@ p {
     font-weight: 400;
 }
 
-.sticky-container {
-  position: relative;
-  height: 1000px;
+.entry {
+    padding: 100px;
+    margin: 20px;
 }
 
-.sticky-element {
-  position: sticky;
-  top: 25%;
-  padding: 100px;
+.form-section {
+    margin: 0;
+    width: 50%;
+    max-height: 90vh;
+    display: none;
+}
+
+textarea {
+    font-family: monospace;
+    border: 2px solid red;
+    font-size: 1.5em;
+    background-color: white;
+    color: red;
+    display: block;
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+    resize: none;
+}
+
+textarea:focus {
+    outline: none;
+}
+
+.c-button {
+    font-size: 1em;
+}
+
+.buttonRow {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.buttonRow>button {
+    width: 50%;
+}
+
+.form-section>div>img {
+    width: 125px;
+    height: 125px;
+    border: 2px solid red;
+    cursor: pointer;
 }
