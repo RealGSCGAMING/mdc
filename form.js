@@ -266,88 +266,98 @@ let cq = 1;
 
             s3inp.disabled = true;
 
-            if (cq != 30) {
-                combinedAnswers += s3inp.value;
-            }
+            setTimeout(async () => {
 
-            setTimeout(() => {
+                let i = s3inp.value.toLowerCase();
 
-                clearTimeout(t);
+                if (await checkAnswer(i, a)) {
 
-                cq++;
-
-                if (questions[cq - 1] != null) {
-                    text.innerText = questions[cq - 1];
-
-                    if (cq == 6) {
-                        section3.style.display = "none";
-
-                        setTimeout(() => {
-                            captchaText.innerText = "🔒 Protected by reCATATATHA"
-                            section3.style.display = "flex";
-                            s3inp.focus();
-                        }, 10);
-
+                    if (cq != 30) {
+                        combinedAnswers += s3inp.value;
+                        console.log(combinedAnswers);
                     }
 
-                    else if (cq == 7) {
+                    clearTimeout(t);
 
-                        section3.style.display = "none";
+                    cq++;
 
-                        setTimeout(() => {
+                    if (questions[cq - 1] != null) {
+                        text.innerText = questions[cq - 1];
+
+                        if (cq == 6) {
+                            section3.style.display = "none";
+
+                            setTimeout(() => {
+                                captchaText.innerText = "🔒 Protected by reCATATATHA"
+                                section3.style.display = "flex";
+                                s3inp.focus();
+                            }, 10);
+
+                        }
+
+                        else if (cq == 7) {
+
+                            section3.style.display = "none";
+
+                            setTimeout(() => {
+                                captchaText.innerText = "🔒 Protected by reCAPATACHA"
+                                section3.style.display = "flex";
+                                s3inp.focus();
+                            }, 10);
+
+                        }
+
+                        else if (cq == 16) {
+                            captchaText.innerText = "🔒 Protected by [REDACTED]"
+                        }
+
+                        else if (cq == 17) {
                             captchaText.innerText = "🔒 Protected by reCAPATACHA"
-                            section3.style.display = "flex";
-                            s3inp.focus();
-                        }, 10);
+                        }
 
+                        else if (cq == 18) {
+                            captchaText.innerText = "🔒 Protected by reOAPATACH4"
+                        }
+
+                        else if (cq == 19) {
+                            captchaText.innerText = "🔒 Protected by reCAPATACHA"
+                        }
+
+                        else if (cq == 20) {
+                            t = setTimeout(() => {
+                                text.innerText += "\nYou may also type the word \"human\" if you are a human.";
+                            }, 5000);
+                        }
+
+                        else if (cq == 25) {
+                            t = setTimeout(() => {
+                                text.innerText += "\nHint: It can be found somewhere on this website.";
+                            }, 7500);
+                        }
+
+                        else if (cq == 28) {
+                            t = setTimeout(() => {
+                                text.innerText += "\nHint: The count starts after you click the \"I'm not a robot\" button.";
+                            }, 7500);
+                        }
+
+                        else if (cq == 31) {
+                            captchaComplete();
+                        }
                     }
 
-                    else if (cq == 16) {
-                        captchaText.innerText = "🔒 Protected by [REDACTED]"
+                    else {
+                        text.innerText = "Failed to load question."
                     }
 
-                    else if (cq == 17) {
-                        captchaText.innerText = "🔒 Protected by reCAPATACHA"
-                    }
-
-                    else if (cq == 18) {
-                        captchaText.innerText = "🔒 Protected by reOAPATACH4"
-                    }
-
-                    else if (cq == 19) {
-                        captchaText.innerText = "🔒 Protected by reCAPATACHA"
-                    }
-
-                    else if (cq == 20) {
-                        t = setTimeout(() => {
-                            text.innerText += "\nYou may also type the word \"human\" if you are a human.";
-                        }, 5000);
-                    }
-
-                    else if (cq == 25) {
-                        t = setTimeout(() => {
-                            text.innerText += "\nHint: It can be found somewhere on this website.";
-                        }, 7500);
-                    }
-
-                    else if (cq == 28) {
-                        t = setTimeout(() => {
-                            text.innerText += "\nHint: The count starts after you click the \"I'm not a robot\" button.";
-                        }, 7500);
-                    }
-
-                    else if (cq == 31) {
-                        captchaComplete();
-                    }
+                    s3inp.value = "";
+                    s3inp.disabled = false;
+                    s3inp.focus();
                 }
 
                 else {
-                    text.innerText = "Failed to load question."
+                    s3inp.disabled = false;
                 }
-
-                s3inp.value = "";
-                s3inp.disabled = false;
-                s3inp.focus();
 
             }, 100);
         }
