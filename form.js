@@ -268,7 +268,6 @@ let cq = 1;
 
             if (cq != 30) {
                 combinedAnswers += s3inp.value;
-                console.log(combinedAnswers);
             }
 
             setTimeout(() => {
