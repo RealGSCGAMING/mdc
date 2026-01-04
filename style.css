@@ -217,7 +217,7 @@ p {
 
 .entry {
     padding: 100px;
-    margin: 20px;
+    margin: 50px;
 }
 
 .form-section {
@@ -225,6 +225,7 @@ p {
     width: 50%;
     max-height: 90vh;
     display: none;
+    transition: background-color 0.5s;
 }
 
 textarea {
@@ -264,4 +265,11 @@ textarea:focus {
     height: 125px;
     border: 2px solid red;
     cursor: pointer;
+}
+
+.information {
+    padding: 20px;
+    background-color: lightgray;
+    margin: 20px;
+    font-size: 20px;
 }

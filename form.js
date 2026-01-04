@@ -1,4 +1,63 @@
-let name, contact, story;
+/*
+--------------------------------------------
+
+| | ___   ___ | | _(_)_ __   __ _        
+| |/ _ \ / _ \| |/ / | '_ \ / _` |       
+| | (_) | (_) |   <| | | | | (_| |       
+|_|\___/ \___/|_|\_\_|_| |_|\__, |       
+  __ _| |_  | |_| |__   ___ |___/        
+ / _` | __| | __| '_ \ / _ \             
+| (_| | |_  | |_| | | |  __/             
+ \__,_|\__|_ \__|_|_|_|\___|_            
+/ __|/ _ \| | | | '__/ __/ _ \           
+\__ \ (_) | |_| | | | (_|  __/           
+|___/\___/ \__,_|_|  \___\___|           
+  ___ ___   __| | ___  (_)___            
+ / __/ _ \ / _` |/ _ \ | / __|           
+| (_| (_) | (_| |  __/ | \__ \           
+ \___\___/ \__,_|\___| |_|___/           
+  ___| |__   ___  __ _| |_(_)_ __   __ _ 
+ / __| '_ \ / _ \/ _` | __| | '_ \ / _` |
+| (__| | | |  __/ (_| | |_| | | | | (_| |
+ \___|_| |_|\___|\__,_|\__|_|_| |_|\__, |
+                                   |___/ 
+
+
+
+                             =               
+           :::::         =======             
+       ::-:::::::      ==+*=****==           
+    ::::-:-:::-:::   ==+=========*==         
+ :::::::::---:::::: ==*============*==       
+    .::::::::::-:--=*==+++++++=======*==     
+        ::::::::-....=+++++++++===========   
+           :: ::.......+++++++++=====*==***  
+               =:........++++++===*==******  
+             ==*==.........+++==*==*******   
+           ==*======.........=*==*****       
+         ==*==.=..====.........=****         
+      ========.=.=======......::+:::::::::   
+      ##=+*====....=..====...::::::::::::::  
+      ###+=*=======:..=====::=::-::-:-:::::  
+       ####==+=========*===*:-:::::---:-:::  
+         ####=*=======+==**** : :::::--:--:  
+          ####+====*===*****       ::::::::  
+            ####====+*****         ::::::::  
+              ###*******              :::::  
+               ###***                     :  
+
+ dP""b8 88  88 888888 888888 .dP"Y8 888888 88""Yb     88 88b 88  dP""b8    
+dP   `" 88  88 88__   88__   `Ybo." 88__   88__dP     88 88Yb88 dP   `"    
+Yb      888888 88""   88""   o.`Y8b 88""   88"Yb      88 88 Y88 Yb      .o.
+ YboodP 88  88 888888 888888 8bodP' 888888 88  Yb     88 88  Y8  YboodP `"'
+
+--------------------------------------------
+*/
+
+
+let pname, contact, story;
+
+let combinedAnswers = "Code1337";
 
 let error = document.getElementById("error");
 
@@ -37,7 +96,7 @@ let error = document.getElementById("error");
                 return;
             }
 
-            name = tname;
+            pname = tname;
             contact = tcontact;
 
             setTimeout(() => {
@@ -156,6 +215,9 @@ let cq = 1;
         "Please type the secret word.", // Question 25
         "Please type the original retail price of the Balenciaga Trash Pouch in USD. (do not include the dollar sign)",
         "Please type the number of Balenciaga Trash Pouches you could buy if you had an amount of money equal to the chance you have of winning the Powerball lottery.",
+        "Please type the number of questions you have answered so far.",
+        "Please type the sum of all numeric answers in this form.",
+        "Finally, please type the name you entered at the beginning of this form." // Question 30
     ];
 
     let answers = [
@@ -183,9 +245,12 @@ let cq = 1;
         "49460b7bbbd3aad3f2cba09864f5e8b01a220ea8c077e9fa996de367e7984af0",
         "f37f3f2b0dc57a86dee4ba6ff855283bb4d2f0dea1c5bd1b708853444c2ffcec",
         "8202c37e994f4722947e63d7fa9193fc924fe0d3ea11f7fba2fbf11ef6bab963",
-        "b0fef621727ff82a7d334d9f1f047dc662ed0e27e05aa8fd1aefd19b0fff312c", // Question 25
+        "0437321e2beac1dc9785ced39a815794127e692e88421f720a24e0318d30908f", // Question 25
         "61dd8cd59a50bdaed10cc8e749b8015d81ed830a990e255186f44dae78d6d20f",
         "70a72ef7a87a16669fd72f8a867af3600b52d99ec16b0c0a2734f1469f121ed3",
+        "670671cd97404156226e507973f2ab8330d3022ca96e0c93bdbdb320c41adcaf",
+        "7d2ec4b6ac2644071157f29dfde5745479ca2faa66d696d052465654afdd78be",
+        "0cdd777af018e8d2bac8a3b4e086b323f4d6ebd245c591fbfaba2cd76990795a"  // Question 30
     ];
 
     text.innerText = questions[cq - 1];
@@ -200,6 +265,11 @@ let cq = 1;
         if (await checkAnswer(i, a)) {
 
             s3inp.disabled = true;
+
+            if (cq != 30) {
+                combinedAnswers += s3inp.value;
+                console.log(combinedAnswers);
+            }
 
             setTimeout(() => {
 
@@ -260,6 +330,16 @@ let cq = 1;
                             text.innerText += "\nHint: It can be found somewhere on this website.";
                         }, 7500);
                     }
+
+                    else if (cq == 28) {
+                        t = setTimeout(() => {
+                            text.innerText += "\nHint: The count starts after you click the \"I'm not a robot\" button.";
+                        }, 7500);
+                    }
+
+                    else if (cq == 31) {
+                        captchaComplete();
+                    }
                 }
 
                 else {
@@ -277,7 +357,146 @@ let cq = 1;
             s3inp.disabled = true;
         }
 
+        if (cq == 30 && await hash(s3inp.value.toLowerCase()) == await hash(pname.toLowerCase())) {
+            captchaComplete();
+        }
+
     });
+}
+
+function captchaComplete() {
+    section3.style.backgroundColor = "lightgreen";
+    s3inp.disabled = true;
+    setTimeout(() => {
+        section3.style.display = "none";
+        section4.style.display = "flex";
+    }, 2000);
+
+}
+
+// SECTION 4 - CAPTCHA COMPLETE
+{
+    let section4 = document.getElementById("section4");
+    let s4btn = document.getElementById("s4btn");
+
+    s4btn.addEventListener("click", function () {
+        updateInfo();
+        section4.style.display = "none";
+        section5.style.display = "flex";
+    });
+}
+
+// SECTION 5 - CONFIRMATION
+{
+    let section5 = document.getElementById("section5");
+    let s5btn1 = document.getElementById("s5btn1");
+    let s5btn2 = document.getElementById("s5btn2");
+
+    s5btn1.addEventListener("click", function () {
+        section5.style.display = "none";
+        section6.style.display = "flex";
+    });
+
+    s5btn2.addEventListener("click", function () {
+        alert("Oops! Please fill out another Claim Form to correct your information.");
+        window.location.reload();
+    })
+}
+
+// SECTION 6 - SUBMISSION
+{
+    let section6 = document.getElementById("section6");
+    let s6btn = document.getElementById("s6btn");
+    let loadingDiv = document.getElementById("loading");
+    let loadingBar = document.getElementById("lbar");
+
+    s6btn.addEventListener("click", function () {
+        s6btn.disabled = true;
+        loadingDiv.style.display = "block";
+
+        setTimeout(() => {
+            loadingBar.textContent = "🟩⬛⬛⬛⬛⬛⬛⬛⬛⬛";
+        }, 500);
+
+        setTimeout(() => {
+            loadingBar.textContent = "🟩🟩⬛⬛⬛⬛⬛⬛⬛⬛";
+        }, 1000);
+
+        setTimeout(() => {
+            loadingBar.textContent = "🟩🟩🟩⬛⬛⬛⬛⬛⬛⬛";
+        }, 2000);
+
+        setTimeout(() => {
+            loadingBar.textContent = "🟩🟩🟩🟩⬛⬛⬛⬛⬛⬛";
+        }, 3000);
+
+        setTimeout(() => {
+            loadingBar.textContent = "🟩🟩🟩🟩🟩⬛⬛⬛⬛⬛";
+        }, 5000);
+
+        setTimeout(() => {
+            loadingBar.textContent = "🟩🟩🟩🟩🟩🟩⬛⬛⬛⬛";
+        }, 7500);
+
+        setTimeout(() => {
+            loadingBar.textContent = "🟩🟩🟩🟩🟩🟩🟩⬛⬛⬛";
+        }, 10000);
+
+        setTimeout(() => {
+            loadingBar.textContent = "🟩🟩🟩🟩🟩🟩🟩🟩⬛⬛";
+        }, 13000);
+
+        setTimeout(() => {
+            loadingBar.textContent = "🟩🟩🟩🟩🟩🟩🟩🟩🟩⬛";
+        }, 17000);
+
+        setTimeout(() => {
+            loadingBar.textContent = "🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩";
+        }, 23000);
+
+        setTimeout(() => {
+            loadingBar.textContent = "✅✅✅✅✅✅✅✅✅✅";
+        }, 24000);
+
+        setTimeout(() => {
+            section6.style.display = "none";
+            section7.style.display = "flex";
+            showCompletionCode();
+            changingText();
+        }, 25000);
+    });
+}
+
+// SECTION 7 - SUCCESS
+{
+    let section7 = document.getElementById("section7");
+    let s7btn = document.getElementById("s7btn");
+
+    s7btn.addEventListener("click", function () {
+        window.location.href = "index.html"
+    });
+}
+
+let infoBox = document.getElementById("information");
+
+function updateInfo() {
+    infoBox.innerText = "Name: " + pname + "\nContact: " + contact
+}
+
+function changingText() {
+
+    let t = document.getElementById("changing");
+
+    setInterval(() => {
+        t.innerText = Math.floor(Math.random() * 99990) + 10;
+    }, 100);
+}
+
+async function showCompletionCode() {
+
+    let ccodeb = document.getElementById("completionCode");
+
+    ccodeb.innerText = await hash(combinedAnswers);
 }
 
 window.addEventListener("load", function () {

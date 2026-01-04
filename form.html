@@ -1,3 +1,60 @@
+<!--
+--------------------------------------------
+
+| | ___   ___ | | _(_)_ __   __ _        
+| |/ _ \ / _ \| |/ / | '_ \ / _` |       
+| | (_) | (_) |   <| | | | | (_| |       
+|_|\___/ \___/|_|\_\_|_| |_|\__, |       
+  __ _| |_  | |_| |__   ___ |___/        
+ / _` | __| | __| '_ \ / _ \             
+| (_| | |_  | |_| | | |  __/             
+ \__,_|\__|_ \__|_|_|_|\___|_            
+/ __|/ _ \| | | | '__/ __/ _ \           
+\__ \ (_) | |_| | | | (_|  __/           
+|___/\___/ \__,_|_|  \___\___|           
+  ___ ___   __| | ___  (_)___            
+ / __/ _ \ / _` |/ _ \ | / __|           
+| (_| (_) | (_| |  __/ | \__ \           
+ \___\___/ \__,_|\___| |_|___/           
+  ___| |__   ___  __ _| |_(_)_ __   __ _ 
+ / __| '_ \ / _ \/ _` | __| | '_ \ / _` |
+| (__| | | |  __/ (_| | |_| | | | | (_| |
+ \___|_| |_|\___|\__,_|\__|_|_| |_|\__, |
+                                   |___/ 
+
+
+
+                             =               
+           :::::         =======             
+       ::-:::::::      ==+*=****==           
+    ::::-:-:::-:::   ==+=========*==         
+ :::::::::---:::::: ==*============*==       
+    .::::::::::-:--=*==+++++++=======*==     
+        ::::::::-....=+++++++++===========   
+           :: ::.......+++++++++=====*==***  
+               =:........++++++===*==******  
+             ==*==.........+++==*==*******   
+           ==*======.........=*==*****       
+         ==*==.=..====.........=****         
+      ========.=.=======......::+:::::::::   
+      ##=+*====....=..====...::::::::::::::  
+      ###+=*=======:..=====::=::-::-:-:::::  
+       ####==+=========*===*:-:::::---:-:::  
+         ####=*=======+==**** : :::::--:--:  
+          ####+====*===*****       ::::::::  
+            ####====+*****         ::::::::  
+              ###*******              :::::  
+               ###***                     :  
+
+ dP""b8 88  88 888888 888888 .dP"Y8 888888 88""Yb     88 88b 88  dP""b8    
+dP   `" 88  88 88__   88__   `Ybo." 88__   88__dP     88 88Yb88 dP   `"    
+Yb      888888 88""   88""   o.`Y8b 88""   88"Yb      88 88 Y88 Yb      .o.
+ YboodP 88  88 888888 888888 8bodP' 888888 88  Yb     88 88  Y8  YboodP `"'
+
+--------------------------------------------
+-->
+
+
 <!DOCTYPE html>
 <html>
 
@@ -59,7 +116,8 @@
 
     <div class="container form-section" id="section2">
         <h1>This form is protected by reCAPATACHA</h1>
-        <p>Complete the challenge to continue.<br>Please do not include special characters such as commas in your answers.</p>
+        <p>Complete the challenge to continue.<br>Please do not include special characters such as commas in your
+            answers.</p>
         <button id="s2btn" class="red-button c-button">I'm Not A Robot</button>
     </div>
 
@@ -67,6 +125,58 @@
         <p id="captchaText" class="monoFont">🔒 Protected by reCAPATACHA</p>
         <p id="question">Question failed to load.</p>
         <input autocomplete="off" id="s3inp"></input>
+    </div>
+
+    <div class="container form-section" id="section4">
+        <h1>reCAPATACHA Challenge Completed</h1>
+        <p>You've proven you're a human. Continue your action.</p>
+        <button id="s4btn" class="red-button c-button">Continue</button>
+    </div>
+
+    <div class="container form-section" id="section5">
+        <p class="monoFont">Confirm your information</p>
+
+        <h3>Is this information correct?</h3>
+
+        <code class="information" id="information">Name: [name]<br>Contact: [contact]</code>
+
+        <span>
+            <button id="s5btn1" class="red-button c-button" style="background-color: green; color: white;">Yes</button>
+            <button id="s5btn2" class="red-button c-button">No</button>
+        </span>
+    </div>
+
+    <div class="container form-section" id="section6">
+        <p class="monoFont">Submit</p>
+
+        <h2>Almost there!</h2>
+        <p>Please click the button below to submit your Claim Form.</p>
+
+        <button id="s6btn" class="red-button">SUBMIT</button>
+
+        <div id="loading" class="information" style="display: none;">
+            <h2>Submitting...</h2>
+            <p id="lbar">⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛</p>
+        </div>
+    </div>
+
+    <div class="container form-section" id="section7">
+        <p class="monoFont">Submission success!</p>
+
+        <h1>Thank you!</h1>
+        <span>
+            <p>Your form has been submitted successfully. Please allow up to</p>
+            <h2 id="changing">100</h2>
+            <p>business days for your entry to be processed.</p>
+            <div class="information">
+                <small class="monoFont" style="font-size: 15px;">Psst - If you're a tester for this website, send the
+                    completion code below to prove that you completed the form.</small><br>
+                <small class="monoFont" id="completionCode" style="font-size: 10px;"></small>
+            </div>
+        </span>
+
+
+        <button id="s7btn" class="red-button c-button">Return Home</button>
     </div>
 
     <div style="margin-top: 10px;">
