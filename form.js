@@ -149,6 +149,13 @@ let cq = 1;
         "Please type the answer to the question 2 questions before the question where the name of the CAPTCHA service changed.",
         "Please type what the name of the CAPTCHA service was on the previous question.",
         "Please type the word \"robot\" if you are a robot.", // Question 20
+        "Please type only the capital letters in the 11th question.",
+        "Please type the name of the creature that your response to the previous question often fights in a popular video game series.",
+        "Please type the release year of the first game in the aforementioned series.",
+        "Please type the sum of the answers to the previous question and question 11.",
+        "Please type the secret word.", // Question 25
+        "Please type the original retail price of the Balenciaga Trash Pouch in USD. (do not include the dollar sign)",
+        "Please type the number of Balenciaga Trash Pouches you could buy if you had an amount of money equal to the chance you have of winning the Powerball lottery.",
     ];
 
     let answers = [
@@ -172,9 +179,18 @@ let cq = 1;
         "8f72567cf7899ec323ccd07740125fb28e927582343ad1d7a7587518d9126bd8",
         "e43b45632b83e203af9bb2db684c08fff5e0088044f5e0ff6e06c25066bf288d",
         "79a5478768d2447431a90f7f4549df735f50ad541371464c248abc7522dc3a01", // Question 20
+        "8b6bfe00f00345950da703a9a970d891d328b08f378c186dec232133ef62af19",
+        "49460b7bbbd3aad3f2cba09864f5e8b01a220ea8c077e9fa996de367e7984af0",
+        "f37f3f2b0dc57a86dee4ba6ff855283bb4d2f0dea1c5bd1b708853444c2ffcec",
+        "8202c37e994f4722947e63d7fa9193fc924fe0d3ea11f7fba2fbf11ef6bab963",
+        "b0fef621727ff82a7d334d9f1f047dc662ed0e27e05aa8fd1aefd19b0fff312c", // Question 25
+        "61dd8cd59a50bdaed10cc8e749b8015d81ed830a990e255186f44dae78d6d20f",
+        "70a72ef7a87a16669fd72f8a867af3600b52d99ec16b0c0a2734f1469f121ed3",
     ];
 
     text.innerText = questions[cq - 1];
+
+    let t;
 
     s3inp.addEventListener("input", async function () {
 
@@ -186,6 +202,8 @@ let cq = 1;
             s3inp.disabled = true;
 
             setTimeout(() => {
+
+                clearTimeout(t);
 
                 cq++;
 
@@ -232,8 +250,14 @@ let cq = 1;
                     }
 
                     else if (cq == 20) {
-                        setTimeout(() => {
-                            text.innerText = "Please type the word \"robot\" if you are a robot.\nYou may also type the word \"human\" if you are a human.";
+                        t = setTimeout(() => {
+                            text.innerText += "\nYou may also type the word \"human\" if you are a human.";
+                        }, 5000);
+                    }
+
+                    else if (cq == 25) {
+                        t = setTimeout(() => {
+                            text.innerText += "\nHint: It can be found somewhere on this website.";
                         }, 7500);
                     }
                 }
