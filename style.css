@@ -222,7 +222,8 @@ p {
 
 .form-section {
     margin: 0;
-    width: 50%;
+    width: 50vw;
+    max-width: none;
     max-height: 90vh;
     display: none;
     transition: background-color 0.5s;
