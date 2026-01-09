@@ -273,7 +273,7 @@ let cq = 1;
                 if (await checkAnswer(i, a)) {
 
                     if (cq != 30) {
-                        combinedAnswers += s3inp.value;
+                        combinedAnswers += s3inp.value.toLowerCase();
                         console.log(combinedAnswers);
                     }
 
